@@ -24,6 +24,7 @@ body{
 /* ---------- STAGE ---------- */
 #stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
   padding:56px 56px 84px;}
+body.first #stage{padding-top:clamp(150px,26vh,200px)}
 .card{
   width:100%;max-width:1120px;max-height:100%;
   background:linear-gradient(165deg,var(--parchment),var(--parchment2));
@@ -112,6 +113,8 @@ strong{color:var(--ink)}
 @media (max-width:640px){
   #hint{display:none}
   #stage{padding:40px 14px 96px}
+  body.first #stage{padding-top:150px}
+  #biglogo{width:clamp(84px,12vh,120px)}
   .btn{padding:.45em 1em;font-size:.85rem}
   .pic{max-height:38vh}
 }
@@ -288,6 +291,7 @@ strong{color:var(--ink)}
     counter.textContent=(i+1)+' / '+n;
     progress.style.width=((i+1)/n*100)+'%';
     biglogo.classList.toggle('hidden',i!==0);
+    document.body.classList.toggle('first',i===0);
   }
   document.getElementById('next').onclick=function(e){e.stopPropagation();show(i+1)};
   document.getElementById('prev').onclick=function(e){e.stopPropagation();show(i-1)};
